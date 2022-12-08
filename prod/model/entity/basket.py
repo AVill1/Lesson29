@@ -13,6 +13,15 @@ class Basket:
     def __len__(self):
         return len(self._products)
 
+    # def __iter__(self):
+    #     return iter(self._products)
+    def __iter__(self):
+        self.__index = -1
+        return self
+
+    def __next__(self):
+        self.__index += 1
+        return self._products[self.__index]
 
 
 
@@ -28,5 +37,20 @@ class Basket:
 
 
 basket = Basket()
-print(len(basket))
-print(bool(basket))
+# print(len(basket))
+# print(bool(basket))
+basket.add(Product(10))
+basket.add(Product(20))
+basket.add(Product(30))
+
+# it = iter(basket)
+# print(next(it))
+# print(next(it))
+# print(next(it))
+# print(next(it))
+
+print(basket[0])
+basket[0] = Product(100)
+
+for pr in basket:
+    print(pr)
