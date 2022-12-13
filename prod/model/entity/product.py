@@ -12,6 +12,11 @@ class Product:
     def price(self, price):
         if price >= 0:
             self._price = price
+        else:
+            if not hassttr(self, "_price"):
+                self._price = 0
+            else:
+                raise ValueError("Product price was wrong")
 
     @price.deleter
     def price(self):
